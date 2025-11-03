@@ -1,0 +1,13 @@
+.disktop_container {
+  position: absolute;
+  bottom: -120px;
+  z-index: 9;
+  margin: auto 12;
+  width: 100%;
+}
+
+.mobile_container {
+  margin: auto 0;
+  width: 100%;
+  margin-top: 5px;
+}
