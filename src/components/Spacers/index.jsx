@@ -80,7 +80,11 @@ export default function SpacersRoute() {
   const tempIndex = (page - 1) * ITEMS_PER_PAGE;
   const paginated = filtered.slice(tempIndex, tempIndex + ITEMS_PER_PAGE);
   const handleAddToCart = (data) => {
-    addToCart(data);
+    const obj = {
+      ...data,
+      type: "spacers",
+    };
+    addToCart(obj);
   };
   return (
     <Container

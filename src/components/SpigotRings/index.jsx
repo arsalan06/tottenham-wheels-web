@@ -65,7 +65,11 @@ export default function SpigotRings() {
   const tempIndex = (page - 1) * ITEMS_PER_PAGE;
   const paginated = filtered.slice(tempIndex, tempIndex + ITEMS_PER_PAGE);
   const handleAddToCart = (data) => {
-    addToCart(data);
+    const obj = {
+      ...data,
+      type: "spigotRings",
+    };
+    addToCart(obj);
   };
   return (
     <Container

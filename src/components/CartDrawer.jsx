@@ -17,6 +17,7 @@ import {
 } from "@mui/material";
 import { Close, Add, Remove, Delete, ShoppingCart } from "@mui/icons-material";
 import { useCart } from "../context/CartContext";
+import { useNavigate } from "react-router-dom";
 
 const CartDrawer = () => {
   const {
@@ -28,7 +29,7 @@ const CartDrawer = () => {
     getTotalPrice,
     clearCart,
   } = useCart();
-
+  const navigate = useNavigate();
   const handleQuantityChange = (id, currentQuantity, change) => {
     const newQuantity = currentQuantity + change;
     if (newQuantity > 0) {
@@ -37,7 +38,10 @@ const CartDrawer = () => {
       removeFromCart(id);
     }
   };
-
+  const handleCheckout = () => {
+    toggleCart();
+    navigate("/checkout");
+  };
   return (
     <Drawer
       anchor="right"
@@ -238,6 +242,7 @@ const CartDrawer = () => {
                     variant="contained"
                     fullWidth
                     size="large"
+                    onClick={handleCheckout}
                     sx={{
                       bgcolor: "#EB3300",
                       "&:hover": { bgcolor: "#d12d00" },

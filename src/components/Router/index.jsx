@@ -16,6 +16,15 @@ import {
   addWheelsStock,
 } from "../../redux/slice/productStockSlice";
 import Contact from "../../pages/Contact";
+import CaliperPaintingDetailPage from "../../pages/ServiceDetail/CaliperPaintingDetail";
+import AlloyWheelCrackRepairPage from "../../pages/ServiceDetail/AlloyWheelCrackRepair";
+import AlloyWheelDiamondCuttingPage from "../../pages/ServiceDetail/AlloyWheelDiamondCutting";
+import WetSprayAlloyWheelsPage from "../../pages/ServiceDetail/wetSprayAlloyWheels";
+import TyreChangingServicePage from "../../pages/ServiceDetail/TyreChangingService";
+import FreshOilInputServicePage from "../../pages/ServiceDetail/FreshOilInput";
+import PowderCoatingServicePage from "../../pages/ServiceDetail/PowderCoatingDetail";
+import AlloyGatorSupplyAndFittingPage from "../../pages/ServiceDetail/AlloyGatorSupplyAndFitting";
+import Checkout from "../../pages/Checkout";
 
 const Router = () => {
   const dispatch = useDispatch();
@@ -42,7 +51,37 @@ const Router = () => {
       <Route path="/services" element={<Services />} />
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
+      <Route path="/checkout" element={<Checkout />} />
       <Route path="/product/:id" element={<ProductDetail />} />
+      <Route
+        path="/alloyGatorSupplyAndFitting"
+        element={<AlloyGatorSupplyAndFittingPage />}
+      />
+      <Route
+        path="/powderCoatingService"
+        element={<PowderCoatingServicePage />}
+      />
+      <Route path="/freshOilInput" element={<FreshOilInputServicePage />} />
+      <Route
+        path="/tyreChangingService"
+        element={<TyreChangingServicePage />}
+      />
+      <Route
+        path="/wetSprayAlloyWheels"
+        element={<WetSprayAlloyWheelsPage />}
+      />
+      <Route
+        path="/alloyWheelDiamondCutting"
+        element={<AlloyWheelDiamondCuttingPage />}
+      />
+      <Route
+        path="/alloyWheelCrackRepair"
+        element={<AlloyWheelCrackRepairPage />}
+      />
+      <Route
+        path="/caliperPaintingDetail"
+        element={<CaliperPaintingDetailPage />}
+      />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

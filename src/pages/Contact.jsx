@@ -144,7 +144,11 @@ const Contact = () => {
           </Typography>
           <Grid container spacing={3}>
             {contactInfo.map((info) => (
-              <Grid item xs={12} md={4} key={info.title}>
+              <Grid
+                item
+                size={{ xs: 12, sm: 12, md: 4, lg: 4 }}
+                key={info.title}
+              >
                 <Card sx={{ textAlign: "center", height: "100%" }}>
                   <CardContent sx={{ p: 4 }}>
                     <Box
@@ -188,7 +192,7 @@ const Contact = () => {
         <Box sx={{ mb: 8 }}>
           <Grid container spacing={6}>
             {/* Contact Form */}
-            <Grid item xs={12} lg={6}>
+            <Grid item size={{ xs: 12, sm: 12, md: 6, lg: 6 }}>
               <Card>
                 <CardContent sx={{ p: 4 }}>
                   <Typography variant="h5" sx={{ fontWeight: "bold", mb: 3 }}>
@@ -260,7 +264,7 @@ const Contact = () => {
             </Grid>
 
             {/* Map Placeholder */}
-            <Grid item xs={12} lg={6}>
+            <Grid item size={{ xs: 12, sm: 12, md: 6, lg: 6 }}>
               <Card sx={{ height: "100%" }}>
                 <CardContent sx={{ p: 0, height: "100%" }}>
                   <Box
@@ -303,7 +307,11 @@ const Contact = () => {
           </Typography>
           <Grid container spacing={3}>
             {locations.map((location) => (
-              <Grid item xs={12} md={4} key={location.name}>
+              <Grid
+                item
+                size={{ xs: 12, sm: 12, md: 4, lg: 4 }}
+                key={location.name}
+              >
                 <Card>
                   <CardContent sx={{ p: 3 }}>
                     <Box
@@ -419,7 +427,11 @@ const Contact = () => {
           </Typography>
           <Grid container spacing={3}>
             {faqs.map((faq) => (
-              <Grid item xs={12} md={6} key={faq.question}>
+              <Grid
+                item
+                size={{ xs: 12, sm: 12, md: 4, lg: 3 }}
+                key={faq.question}
+              >
                 <Card>
                   <CardContent sx={{ p: 3 }}>
                     <Typography variant="h6" sx={{ fontWeight: "bold", mb: 2 }}>

@@ -9,125 +9,105 @@ import {
   Grid,
   Button,
   Chip,
-  Rating,
-  useTheme,
 } from "@mui/material";
-import { CheckCircle, Clock, MapPin, Phone, Star, Wrench } from "lucide-react";
+import { CheckCircle, Clock, Phone, ViewIcon, Wrench } from "lucide-react";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
-
+import Callipers1 from "../assets/services/Callipers/Callipers1.webp";
+import Callipers2 from "../assets/services/Callipers/Callipers2.webp";
+import wheelrepair1 from "../assets/services/wheel-repair/Alloy-wheel-repair1.webp";
+import wheelrepair2 from "../assets/services/wheel-repair/Alloy-wheel-repair2.webp";
+import wheelcut1 from "../assets/services/wheelcut/wheelcut1.webp";
+import wheelcut2 from "../assets/services/wheelcut/wheelcut2.webp";
+import wetSpray from "../assets/services/wet-spray/wetSpray.webp";
+import wheelChange from "../assets/services/wheel-change/wheelChange.png";
+import oilChange from "../assets/services/oil-change/oilchange.png";
+import powerCoating1 from "../assets/services/power-coating/power-coating1.png";
+import powerCoating2 from "../assets/services/power-coating/power-coating2.webp";
+import Alloygator from "../assets/services/Alloy-gator/Alloygator.png";
+import { useNavigate } from "react-router-dom";
 const Services = () => {
-  const theme = useTheme();
+  const navigate = useNavigate();
   const services = [
     {
       id: 1,
-      name: "Tyre Fitting",
+      name: "Callipers Painting Service",
       price: "From £15",
       duration: "30 mins",
-      image: "/placeholder.svg",
+      route: "/caliperPaintingDetail",
+      image: [Callipers1, Callipers2],
       description:
-        "Professional tyre fitting with wheel balancing and alignment check",
-      features: [
-        "Wheel balancing",
-        "Valve replacement",
-        "Disposal of old tyres",
-        "Safety check",
-      ],
+        "High-quality caliper painting service to enhance your vehicle’s look with durable, vibrant colors.",
     },
     {
       id: 2,
-      name: "Wheel Alignment",
+      name: "Alloy Wheels cracks Repair",
       price: "From £45",
       duration: "45 mins",
-      image: "/placeholder.svg",
+      route: "/alloyWheelCrackRepair",
+      image: [wheelrepair1, wheelrepair2],
       description:
-        "Precision wheel alignment to improve handling and tyre life",
-      features: [
-        "4-wheel alignment",
-        "Suspension check",
-        "Steering adjustment",
-        "Test drive",
-      ],
+        "Professional repair service for fixing cracks in alloy wheels to restore strength and appearance.",
     },
     {
       id: 3,
-      name: "Tyre Pressure Check",
+      name: "Alloy Wheels Diamond Cutting Service",
       price: "FREE",
       duration: "10 mins",
-      image: "/placeholder.svg",
-      description: "Complimentary tyre pressure check and adjustment",
-      features: [
-        "Pressure check",
-        "Visual inspection",
-        "Valve check",
-        "Advice on tyre condition",
-      ],
+      route: "/alloyWheelDiamondCutting",
+      image: [wheelcut1, wheelcut2],
+      description:
+        "Precision diamond cutting service to restore alloy wheels’ original shine and flawless finish.",
     },
     {
       id: 4,
-      name: "Mobile Fitting",
+      name: "Wet Spray",
       price: "From £25",
+      route: "/wetSprayAlloyWheels",
       duration: "60 mins",
-      image: "/placeholder.svg",
-      description: "We come to you - tyre fitting at your location",
-      features: [
-        "At your location",
-        "Same day service",
-        "All equipment provided",
-        "Emergency callout",
-      ],
+      image: [wetSpray],
+      description:
+        "Unique core competen resource sucking methods of empowerment disciplinary deliverables after cost effective",
     },
     {
       id: 5,
-      name: "Puncture Repair",
+      name: "Tyres changing service",
       price: "From £20",
       duration: "20 mins",
-      image: "/placeholder.svg",
-      description: "Quick and reliable puncture repair service",
-      features: [
-        "Internal patch",
-        "Safety inspection",
-        "Pressure test",
-        "Guarantee included",
-      ],
+      route: "/tyreChangingService",
+      image: [wheelChange],
+      description:
+        "Fast and reliable tyre changing service ensuring safe, smooth, and balanced driving performance.",
     },
     {
       id: 6,
-      name: "Seasonal Storage",
+      name: "Fresh Oil Input",
       price: "From £80",
       duration: "N/A",
-      image: "/placeholder.svg",
-      description: "Winter/summer tyre storage service",
-      features: [
-        "Climate controlled",
-        "Labeling system",
-        "Regular inspection",
-        "Cleaning included",
-      ],
-    },
-  ];
-
-  const locations = [
-    {
-      name: "Central London",
-      address: "123 High Street, London, SW1A 1AA",
-      phone: "020 7123 4567",
-      hours: "Mon-Fri: 8:00-18:00, Sat: 9:00-17:00, Sun: 10:00-16:00",
-      rating: 4.8,
+      route: "/freshOilInput",
+      image: [oilChange],
+      description:
+        "Professional fresh oil change service to keep your engine running smoothly and efficiently.",
     },
     {
-      name: "Birmingham",
-      address: "456 Bull Ring, Birmingham, B1 1AA",
-      phone: "0121 123 4567",
-      hours: "Mon-Fri: 8:00-18:00, Sat: 9:00-17:00, Sun: Closed",
-      rating: 4.9,
+      id: 7,
+      name: "Powder Coating Alloy Wheels",
+      price: "From £80",
+      route: "/powderCoatingService",
+      duration: "N/A",
+      image: [powerCoating1, powerCoating2],
+      description:
+        "Durable powder coating service to protect and refresh alloy wheels with a flawless, long-lasting finish.",
     },
     {
-      name: "Manchester",
-      address: "789 Market Street, Manchester, M1 1AA",
-      phone: "0161 123 4567",
-      hours: "Mon-Fri: 8:00-18:00, Sat: 9:00-17:00, Sun: 10:00-16:00",
-      rating: 4.7,
+      id: 8,
+      name: "Alloygator Supply And Fitting",
+      price: "From £80",
+      route: "/alloyGatorSupplyAndFitting",
+      duration: "N/A",
+      image: [Alloygator],
+      description:
+        "Professional AlloyGator supply and fitting service to protect your alloy wheels from curb damage and enhance their appearance.",
     },
   ];
 
@@ -163,7 +143,7 @@ const Services = () => {
             Expert tyre fitting, alignment, and maintenance services by
             certified technicians.
           </Typography>
-          <Button
+          {/* <Button
             variant="contained"
             size="large"
             sx={{
@@ -173,7 +153,7 @@ const Services = () => {
             }}
           >
             Book Service Now
-          </Button>
+          </Button> */}
         </Container>
       </Box>
 
@@ -185,7 +165,11 @@ const Services = () => {
           </Typography>
           <Grid container spacing={3}>
             {services.map((service) => (
-              <Grid item xs={12} md={6} lg={4} key={service.id}>
+              <Grid
+                item
+                size={{ xs: 12, sm: 12, md: 4, lg: 4 }}
+                key={service.id}
+              >
                 <Card
                   sx={{
                     height: "100%",
@@ -197,7 +181,7 @@ const Services = () => {
                     <CardMedia
                       component="img"
                       height="200"
-                      image={service.image}
+                      image={service.image[0]}
                       alt={service.name}
                     />
                     <Chip
@@ -224,12 +208,12 @@ const Services = () => {
                       <Typography variant="h6" sx={{ fontWeight: "bold" }}>
                         {service.name}
                       </Typography>
-                      <Typography
+                      {/* <Typography
                         variant="h6"
                         sx={{ fontWeight: "bold", color: "primary.main" }}
                       >
                         {service.price}
-                      </Typography>
+                      </Typography> */}
                     </Box>
 
                     <Typography
@@ -240,7 +224,7 @@ const Services = () => {
                       {service.description}
                     </Typography>
 
-                    <Box sx={{ mb: 3 }}>
+                    {/* <Box sx={{ mb: 3 }}>
                       {service.features.map((feature, idx) => (
                         <Box
                           key={idx}
@@ -255,95 +239,16 @@ const Services = () => {
                           <Typography variant="body2">{feature}</Typography>
                         </Box>
                       ))}
-                    </Box>
+                    </Box> */}
 
                     <Button
                       variant="contained"
                       fullWidth
-                      startIcon={<Clock size={16} />}
+                      startIcon={<ViewIcon size={16} />}
+                      onClick={() => navigate(service?.route)}
                       sx={{ mt: "auto" }}
                     >
-                      Book Now
-                    </Button>
-                  </CardContent>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
-        </Box>
-
-        {/* Locations */}
-        <Box sx={{ mb: 8 }}>
-          <Typography variant="h3" sx={{ fontWeight: "bold", mb: 4 }}>
-            Service Locations
-          </Typography>
-          <Grid container spacing={3}>
-            {locations.map((location) => (
-              <Grid item xs={12} md={4} key={location.name}>
-                <Card>
-                  <CardContent sx={{ p: 3 }}>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "flex-start",
-                        mb: 2,
-                      }}
-                    >
-                      <Box
-                        sx={{ display: "flex", alignItems: "center", gap: 1 }}
-                      >
-                        <MapPin
-                          size={20}
-                          color={theme.palette.secondary.main}
-                        />
-                        <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                          {location.name}
-                        </Typography>
-                      </Box>
-                      <Box
-                        sx={{ display: "flex", alignItems: "center", gap: 0.5 }}
-                      >
-                        <Star size={16} fill="#ffc107" color="#ffc107" />
-                        <Typography variant="body2">
-                          {location.rating}
-                        </Typography>
-                      </Box>
-                    </Box>
-
-                    <Box sx={{ mb: 3 }}>
-                      <Typography variant="body2" sx={{ mb: 1 }}>
-                        {location.address}
-                      </Typography>
-                      <Box
-                        sx={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: 1,
-                          mb: 1,
-                        }}
-                      >
-                        <Phone size={16} color={theme.palette.secondary.main} />
-                        <Typography variant="body2">
-                          {location.phone}
-                        </Typography>
-                      </Box>
-                      <Box
-                        sx={{
-                          display: "flex",
-                          alignItems: "flex-start",
-                          gap: 1,
-                        }}
-                      >
-                        <Clock size={16} color={theme.palette.secondary.main} />
-                        <Typography variant="body2">
-                          {location.hours}
-                        </Typography>
-                      </Box>
-                    </Box>
-
-                    <Button variant="outlined" fullWidth>
-                      Get Directions
+                      View Details
                     </Button>
                   </CardContent>
                 </Card>
@@ -389,8 +294,12 @@ const Services = () => {
                     desc: "Same-day fitting available at all locations",
                   },
                 ].map((item) => (
-                  <Grid item xs={12} md={4} key={item.title}>
-                    <Box sx={{ textAlign: "center" }}>
+                  <Grid
+                    item
+                    size={{ xs: 12, sm: 12, md: 4, lg: 4 }}
+                    key={item.title}
+                  >
+                    <Box sx={{ textAlign: "center", width: "100%" }}>
                       <Box
                         sx={{
                           bgcolor: "rgba(255,255,255,0.1)",

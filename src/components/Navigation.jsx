@@ -27,13 +27,12 @@ import {
 import { useCart } from "../context/CartContext";
 import { useIsMobile } from "../hooks/use-mobile";
 
-const Navigation = () => {
+const Navigation = ({ isBg }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false); // 👈 track scroll position
   const navigate = useNavigate();
   const { getTotalItems, toggleCart } = useCart();
   const isMobile = useIsMobile();
-
   const navItems = [
     { id: 1, name: "Wheels", href: "/wheels" },
     { id: 2, name: "Tyres", href: "/tyres" },
@@ -110,7 +109,11 @@ const Navigation = () => {
       <AppBar
         position="fixed"
         sx={{
-          backgroundColor: scrolled ? "primary.main" : "transparent",
+          backgroundColor: isBg
+            ? "primary.main"
+            : scrolled && !isBg
+            ? "primary.main"
+            : "transparent",
           boxShadow: scrolled ? 3 : "none",
           transition: "background-color 0.3s ease, box-shadow 0.3s ease",
           py: 2,
@@ -128,7 +131,7 @@ const Navigation = () => {
               <Stack display="flex" flexDirection="row" gap={1}>
                 <Phone sx={{ color: "#FFFFFF", fontSize: 20 }} />
                 <Typography variant="body2" color="inherit">
-                  MON-FRI (9.30am-3pm)
+                  MON-SAT (9am-6:30pm)
                 </Typography>
               </Stack>
               <Stack display="flex" flexDirection="row" gap={1}>

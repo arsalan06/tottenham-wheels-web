@@ -46,7 +46,7 @@ const Footer = () => {
                 variant="body2"
                 sx={{ color: "grey.400", mb: 3, lineHeight: 1.6 }}
               >
-                Your trusted partner for premium tyres and automotive
+                Your trusted partner for premium wheels and automotive
                 accessories. Quality products, expert service, and competitive
                 prices.
               </Typography>
@@ -55,18 +55,18 @@ const Footer = () => {
               <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
                 <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
                   <Phone sx={{ fontSize: 16, color: "#EB3300" }} />
-                  <Typography variant="body2">0800 123 4567</Typography>
+                  <Typography variant="body2">+44 7886 644561</Typography>
                 </Box>
                 <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
                   <Email sx={{ fontSize: 16, color: "#EB3300" }} />
                   <Typography variant="body2">
-                    info@tyreshoppro.co.uk
+                    tottenhamwheels17@gmail.com
                   </Typography>
                 </Box>
                 <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
                   <LocationOn sx={{ fontSize: 16, color: "#EB3300" }} />
                   <Typography variant="body2">
-                    123 High Street, London, UK
+                    1, 1 - 7 GARMAN ROAD, TOTTENHAM LONDON
                   </Typography>
                 </Box>
               </Box>
@@ -158,22 +158,8 @@ const Footer = () => {
                     mb: 0.5,
                   }}
                 >
-                  <span>Mon - Fri:</span>
-                  <span>8:00 - 18:00</span>
-                </Box>
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    mb: 0.5,
-                  }}
-                >
-                  <span>Saturday:</span>
-                  <span>8:00 - 16:00</span>
-                </Box>
-                <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-                  <span>Sunday:</span>
-                  <span>10:00 - 16:00</span>
+                  <span>Monday - Saturday: </span>
+                  <span>8:00am - 6:30pm</span>
                 </Box>
               </Box>
             </Box>
@@ -238,9 +224,15 @@ const Footer = () => {
               </Typography>
               <Box sx={{ display: "flex", gap: 1 }}>
                 {[
-                  { icon: Facebook, href: "#" },
+                  {
+                    icon: Facebook,
+                    href: "https://www.facebook.com/share/1Fs1gseppG/",
+                  },
                   { icon: Twitter, href: "#" },
-                  { icon: Instagram, href: "#" },
+                  {
+                    icon: Instagram,
+                    href: "https://www.instagram.com/tottenhamwheels?igsh=MWdwNnZ3YjBoYjlwaA==",
+                  },
                   { icon: LinkedIn, href: "#" },
                 ].map(({ icon: Icon, href }, index) => (
                   <IconButton
@@ -277,7 +269,7 @@ const Footer = () => {
           }}
         >
           <Typography variant="body2" sx={{ color: "grey.500" }}>
-            © 2024 TyreShopPro. All rights reserved.
+            © 2024 Tottenham Wheels. All rights reserved.
           </Typography>
           <Box sx={{ display: "flex", gap: 3 }}>
             {["Privacy Policy", "Terms of Service", "Cookie Policy"].map(

@@ -100,6 +100,7 @@ const About = () => {
             `linear-gradient(135deg, ${theme.palette.secondary.main} 0%, ${theme.palette.secondary.main}CC 100%)`,
           color: "white",
           py: 8,
+          pt: 18,
         }}
       >
         <Container maxWidth="xl">

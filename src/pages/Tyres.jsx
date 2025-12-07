@@ -111,7 +111,11 @@ const Tyres = () => {
     setIsOpen(true);
   };
   const handleAddToCart = (tyre) => {
-    addToCart(tyre);
+    const obj = {
+      ...tyre,
+      type: "tyre",
+    };
+    addToCart(obj);
   };
 
   const handleViewDetails = (tyre) => {

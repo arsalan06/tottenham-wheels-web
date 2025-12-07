@@ -134,7 +134,11 @@ const Wheels = () => {
     setIsOpen(true);
   };
   const handleAddToCart = (wheel) => {
-    addToCart(wheel);
+    const obj = {
+      ...wheel,
+      type: "wheel",
+    };
+    addToCart(obj);
   };
 
   const handleViewDetails = (wheel) => {
