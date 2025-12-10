@@ -25,6 +25,9 @@ import FreshOilInputServicePage from "../../pages/ServiceDetail/FreshOilInput";
 import PowderCoatingServicePage from "../../pages/ServiceDetail/PowderCoatingDetail";
 import AlloyGatorSupplyAndFittingPage from "../../pages/ServiceDetail/AlloyGatorSupplyAndFitting";
 import Checkout from "../../pages/Checkout";
+import Auth from "../../pages/Auth";
+import Orders from "../../pages/Orders";
+import OrderDetail from "../../pages/OrderDetail";
 
 const Router = () => {
   const dispatch = useDispatch();
@@ -50,6 +53,7 @@ const Router = () => {
       <Route path="/accessories" element={<Accessories />} />
       <Route path="/services" element={<Services />} />
       <Route path="/about" element={<About />} />
+      <Route path="/auth" element={<Auth />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/checkout" element={<Checkout />} />
       <Route path="/product/:id" element={<ProductDetail />} />
@@ -82,6 +86,8 @@ const Router = () => {
         path="/caliperPaintingDetail"
         element={<CaliperPaintingDetailPage />}
       />
+      <Route path="/orders" element={<Orders />} />
+      <Route path="/orders/:id" element={<OrderDetail />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

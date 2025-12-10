@@ -7,21 +7,19 @@ import {
   Box,
   IconButton,
   Button,
-  TextField,
   Badge,
   Drawer,
   List,
   ListItem,
   ListItemText,
-  InputAdornment,
   Container,
   Stack,
+  Avatar,
 } from "@mui/material";
 import {
   Menu as MenuIcon,
   Close as CloseIcon,
   ShoppingCart,
-  Search,
   Phone,
 } from "@mui/icons-material";
 import { useCart } from "../context/CartContext";
@@ -40,6 +38,7 @@ const Navigation = ({ isBg }) => {
     { id: 4, name: "Services", href: "/services" },
     { id: 5, name: "About", href: "/about" },
     { id: 6, name: "Contact", href: "/contact" },
+    { id: 7, name: "Orders", href: "/orders" },
   ];
 
   // 👇 Detect scroll to change AppBar color
@@ -87,20 +86,6 @@ const Navigation = ({ isBg }) => {
           </ListItem>
         ))}
       </List>
-      <Box sx={{ p: 2 }}>
-        <TextField
-          fullWidth
-          size="small"
-          placeholder="Search tyres..."
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <Search />
-              </InputAdornment>
-            ),
-          }}
-        />
-      </Box>
     </Box>
   );
 
@@ -225,6 +210,20 @@ const Navigation = ({ isBg }) => {
               )} */}
 
               {/* Cart Button */}
+              <IconButton
+                color="inherit"
+                onClick={() => {
+                  navigate("/auth");
+                }}
+                sx={{
+                  border: "1px solid rgba(255,255,255,0.3)",
+                  "&:hover": {
+                    bgcolor: "rgba(255,255,255,0.1)",
+                  },
+                }}
+              >
+                <Avatar sx={{ width: 26, height: 26 }} />
+              </IconButton>
               <IconButton
                 color="inherit"
                 onClick={toggleCart}

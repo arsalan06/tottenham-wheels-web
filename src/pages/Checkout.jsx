@@ -35,6 +35,9 @@ import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import StripeWrapper from "../components/Stripe/StripeWrapper";
 import PaypalGateway from "../components/PaypalForm";
+import ClientDetails from "../components/ClientDetails";
+import ProductList from "../components/ProductList";
+import OrderSummary from "../components/OrderSummary";
 
 const steps = ["Cart Review", "Shipping Details", "Payment"];
 
@@ -57,13 +60,6 @@ const Checkout = () => {
   const subtotal = getTotalPrice();
   const shipping = subtotal > 200 ? 0 : 15;
   const total = subtotal + shipping;
-
-  const handleShippingChange = (e) => {
-    setShippingDetails({
-      ...shippingDetails,
-      [e.target.name]: e.target.value,
-    });
-  };
 
   const handleNext = () => {
     setActiveStep((prev) => prev + 1);
@@ -146,160 +142,16 @@ const Checkout = () => {
 
         <Grid container spacing={4}>
           {/* Main Content */}
-          <Grid item xs={12} md={8}>
+          <Grid item size={{ xs: 12, sm: 12, md: 8, lg: 8 }}>
             {/* Step 0: Cart Review */}
-            {activeStep === 0 && (
-              <Card>
-                <CardContent>
-                  <Typography variant="h6" gutterBottom>
-                    Review Your Order
-                  </Typography>
-                  <Divider sx={{ mb: 2 }} />
-
-                  {items.map((item) => (
-                    <Box
-                      key={item.id}
-                      sx={{
-                        display: "flex",
-                        gap: 2,
-                        py: 2,
-                        borderBottom: "1px solid",
-                        borderColor: "divider",
-                      }}
-                    >
-                      <Avatar
-                        src={item.image || item.images?.[0]}
-                        alt={item.name}
-                        variant="rounded"
-                        sx={{ width: 80, height: 80 }}
-                      />
-                      <Box sx={{ flex: 1 }}>
-                        <Typography variant="subtitle1" fontWeight="bold">
-                          {item.brand} {item.name}
-                        </Typography>
-                        {item.size && (
-                          <Chip
-                            label={item.size}
-                            size="small"
-                            sx={{ mt: 0.5 }}
-                          />
-                        )}
-                        {item.color && (
-                          <Chip
-                            label={item.color}
-                            size="small"
-                            sx={{ mt: 0.5, ml: 0.5 }}
-                          />
-                        )}
-                        <Typography
-                          variant="body2"
-                          color="text.secondary"
-                          sx={{ mt: 1 }}
-                        >
-                          Quantity: {item.quantity}
-                        </Typography>
-                      </Box>
-                      <Typography variant="h6" color="primary">
-                        £{(item.price * item.quantity).toFixed(2)}
-                      </Typography>
-                    </Box>
-                  ))}
-                </CardContent>
-              </Card>
-            )}
+            {activeStep === 0 && <ProductList items={items} />}
 
             {/* Step 1: Shipping Details */}
             {activeStep === 1 && (
-              <Card>
-                <CardContent>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 1,
-                      mb: 2,
-                    }}
-                  >
-                    <LocalShipping color="primary" />
-                    <Typography variant="h6">Shipping Details</Typography>
-                  </Box>
-                  <Divider sx={{ mb: 3 }} />
-
-                  <Grid container spacing={2}>
-                    <Grid item xs={12} sm={6}>
-                      <TextField
-                        fullWidth
-                        label="First Name"
-                        name="firstName"
-                        value={shippingDetails.firstName}
-                        onChange={handleShippingChange}
-                        required
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <TextField
-                        fullWidth
-                        label="Last Name"
-                        name="lastName"
-                        value={shippingDetails.lastName}
-                        onChange={handleShippingChange}
-                        required
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <TextField
-                        fullWidth
-                        label="Email"
-                        name="email"
-                        type="email"
-                        value={shippingDetails.email}
-                        onChange={handleShippingChange}
-                        required
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <TextField
-                        fullWidth
-                        label="Phone"
-                        name="phone"
-                        value={shippingDetails.phone}
-                        onChange={handleShippingChange}
-                        required
-                      />
-                    </Grid>
-                    <Grid item xs={12}>
-                      <TextField
-                        fullWidth
-                        label="Address"
-                        name="address"
-                        value={shippingDetails.address}
-                        onChange={handleShippingChange}
-                        required
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <TextField
-                        fullWidth
-                        label="City"
-                        name="city"
-                        value={shippingDetails.city}
-                        onChange={handleShippingChange}
-                        required
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <TextField
-                        fullWidth
-                        label="Postcode"
-                        name="postcode"
-                        value={shippingDetails.postcode}
-                        onChange={handleShippingChange}
-                        required
-                      />
-                    </Grid>
-                  </Grid>
-                </CardContent>
-              </Card>
+              <ClientDetails
+                shippingDetails={shippingDetails}
+                setShippingDetails={setShippingDetails}
+              />
             )}
 
             {/* Step 2: Payment */}
@@ -378,35 +230,7 @@ const Checkout = () => {
                           sx={{ m: 0, width: "100%" }}
                         />
                         {paymentMethod === "card" && (
-                          // <Box sx={{ mt: 2, pl: 4 }}>
-                          //   <Grid container spacing={2}>
-                          //     <Grid item xs={12}>
-                          //       <TextField
-                          //         fullWidth
-                          //         label="Card Number"
-                          //         placeholder="1234 5678 9012 3456"
-                          //         size="small"
-                          //       />
-                          //     </Grid>
-                          //     <Grid item xs={6}>
-                          //       <TextField
-                          //         fullWidth
-                          //         label="Expiry Date"
-                          //         placeholder="MM/YY"
-                          //         size="small"
-                          //       />
-                          //     </Grid>
-                          //     <Grid item xs={6}>
-                          //       <TextField
-                          //         fullWidth
-                          //         label="CVC"
-                          //         placeholder="123"
-                          //         size="small"
-                          //       />
-                          //     </Grid>
-                          //   </Grid>
-                          // </Box>
-                          <StripeWrapper />
+                          <StripeWrapper total={total} />
                         )}
                       </Paper>
 
@@ -520,13 +344,7 @@ const Checkout = () => {
                           sx={{ m: 0, width: "100%" }}
                         />
                         {paymentMethod === "paypal" && (
-                          <PaypalGateway />
-                          // <Box sx={{ mt: 2, pl: 4 }}>
-                          //   <Typography variant="body2" color="text.secondary">
-                          //     You'll be redirected to PayPal to complete your
-                          //     purchase.
-                          //   </Typography>
-                          // </Box>
+                          <PaypalGateway total={total} />
                         )}
                       </Paper>
                     </RadioGroup>
@@ -542,122 +360,43 @@ const Checkout = () => {
               <Button disabled={activeStep === 0} onClick={handleBack}>
                 Back
               </Button>
-              {activeStep < steps.length - 1 ? (
-                <Button
-                  variant="contained"
-                  onClick={handleNext}
-                  sx={{ bgcolor: "#EB3300", "&:hover": { bgcolor: "#d12d00" } }}
-                >
-                  Continue
-                </Button>
-              ) : (
-                <Button
-                  variant="contained"
-                  onClick={handlePayment}
-                  startIcon={<Lock />}
-                  sx={{ bgcolor: "#EB3300", "&:hover": { bgcolor: "#d12d00" } }}
-                >
-                  Pay £{total.toFixed(2)}
-                </Button>
-              )}
+              {
+                activeStep < steps.length - 1 ? (
+                  <Button
+                    variant="contained"
+                    onClick={handleNext}
+                    sx={{
+                      bgcolor: "#EB3300",
+                      "&:hover": { bgcolor: "#d12d00" },
+                    }}
+                  >
+                    Continue
+                  </Button>
+                ) : (
+                  ""
+                )
+                //  (
+                //   <Button
+                //     variant="contained"
+                //     onClick={handlePayment}
+                //     startIcon={<Lock />}
+                //     sx={{ bgcolor: "#EB3300", "&:hover": { bgcolor: "#d12d00" } }}
+                //   >
+                //     Pay £{total.toFixed(2)}
+                //   </Button>
+                // )
+              }
             </Box>
           </Grid>
 
           {/* Order Summary Sidebar */}
-          <Grid item xs={12} md={4}>
-            <Card sx={{ position: "sticky", top: 20 }}>
-              <CardContent>
-                <Typography variant="h6" gutterBottom>
-                  Order Summary
-                </Typography>
-                <Divider sx={{ mb: 2 }} />
-
-                <Box sx={{ mb: 2 }}>
-                  {items.map((item) => (
-                    <Box
-                      key={item.id}
-                      sx={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        py: 1,
-                      }}
-                    >
-                      <Typography variant="body2" color="text.secondary">
-                        {item.name} × {item.quantity}
-                      </Typography>
-                      <Typography variant="body2">
-                        £{(item.price * item.quantity).toFixed(2)}
-                      </Typography>
-                    </Box>
-                  ))}
-                </Box>
-
-                <Divider sx={{ my: 2 }} />
-
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    mb: 1,
-                  }}
-                >
-                  <Typography>Subtotal</Typography>
-                  <Typography>£{subtotal.toFixed(2)}</Typography>
-                </Box>
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    mb: 1,
-                  }}
-                >
-                  <Typography>Shipping</Typography>
-                  <Typography
-                    color={shipping === 0 ? "success.main" : "text.primary"}
-                  >
-                    {shipping === 0 ? "FREE" : `£${shipping.toFixed(2)}`}
-                  </Typography>
-                </Box>
-                {shipping > 0 && (
-                  <Typography
-                    variant="caption"
-                    color="text.secondary"
-                    display="block"
-                    sx={{ mb: 2 }}
-                  >
-                    Free shipping on orders over £200
-                  </Typography>
-                )}
-
-                <Divider sx={{ my: 2 }} />
-
-                <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-                  <Typography variant="h6">Total</Typography>
-                  <Typography variant="h6" color="primary">
-                    £{total.toFixed(2)}
-                  </Typography>
-                </Box>
-
-                <Box sx={{ mt: 3, p: 2, bgcolor: "grey.100", borderRadius: 2 }}>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 1,
-                      mb: 1,
-                    }}
-                  >
-                    <Lock fontSize="small" color="success" />
-                    <Typography variant="body2" fontWeight="bold">
-                      Secure Checkout
-                    </Typography>
-                  </Box>
-                  <Typography variant="caption" color="text.secondary">
-                    Your payment information is encrypted and secure
-                  </Typography>
-                </Box>
-              </CardContent>
-            </Card>
+          <Grid item size={{ xs: 12, sm: 12, md: 4, lg: 4 }}>
+            <OrderSummary
+              items={items}
+              subtotal={subtotal}
+              shipping={shipping}
+              total={total}
+            />
           </Grid>
         </Grid>
       </Container>

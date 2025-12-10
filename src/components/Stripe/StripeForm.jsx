@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "../../redux/store";
 import { useNavigate } from "react-router-dom";
 import { BaseUrl } from "../../constant";
 import { addCardData } from "../../redux/slice/addToCartSlice";
+import Lock from "@mui/icons-material/Lock";
 
 const CARD_ELEMENT_OPTIONS = {
   style: {
@@ -34,7 +35,7 @@ const CARD_ELEMENT_OPTIONS = {
   hidePostalCode: true,
 };
 
-export default function StripeForm() {
+export default function StripeForm({ total }) {
   const stripe = useStripe();
   const navigate = useNavigate();
   const elements = useElements();
@@ -49,7 +50,7 @@ export default function StripeForm() {
     try {
       const { data } = await axios.post(
         `${BaseUrl}/create-payment-intent`,
-        { amount: totalAmount * 100 } // $55.99 in cents
+        { amount: total * 100 } // $55.99 in cents
       );
 
       const clientSecret = data.clientSecret;
@@ -129,13 +130,14 @@ export default function StripeForm() {
             type="submit"
             variant="contained"
             color="primary"
+            startIcon={<Lock />}
             disabled={!stripe || loading}
             sx={{ mt: 3 }}
           >
             {loading ? (
               <CircularProgress sx={{ color: "#fff" }} size={26} />
             ) : (
-              `Pay ${totalAmount}`
+              `Pay £${total.toFixed(2)}`
             )}
           </Button>
         </Box>

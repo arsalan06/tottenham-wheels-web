@@ -9,20 +9,11 @@ const stripePromise = loadStripe(
   "pk_test_51RqYedAXhwwIKlz7PuhvKO0Qw2zfiADg7Cj94qttk113T0VDwwdKTEhNyvbxBcOxPQrJXA1OvDkQL3Vwrf30NkiN00d8ATuBIZ"
 ); // Use your public key
 
-function StripeWrapper() {
+function StripeWrapper({ total }) {
   return (
-    <Box
-      sx={
-        {
-          // height: "78vh",
-          // display: "flex",
-          // justifyContent: "center",
-          // alignItems: "center",
-        }
-      }
-    >
+    <Box>
       <Elements stripe={stripePromise}>
-        <StripeForm />
+        <StripeForm total={total} />
       </Elements>
     </Box>
   );
